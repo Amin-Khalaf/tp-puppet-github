@@ -11,5 +11,9 @@ package {'tmux':
   ensure => installed,
   name => "tmux"
 
-}
+ }
+
+package {'tree':
+  ensure => installed,
+ } 
 }
