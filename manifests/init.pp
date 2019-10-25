@@ -1,9 +1,7 @@
 node default {
 
-file {'helloworld':
-  path => '/tmp/helloworld',
-  ensure => present,
-  mode => 0640,
+file {'/etc/motd':
+  path => '/etc/motd',
   content => "Helloworld via puppet ! "
 }
 }
