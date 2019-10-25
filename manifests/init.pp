@@ -1,23 +1,23 @@
 # vim: set ts=2 sw=2 et: 
-node default {
 
-file {'/etc/motd':
-  path => '/etc/motd',
-  content => "Helloworld via puppet ! "
+node default {
+  packgage {'make':
+    ensure => installed,
   }
+  package {'tree':
+    ensure => installed,
+  }
+
+}
+
+class packages_wiki {
+
+  $wiki_dep = ['apache2','php7.3']
+  package { $wiki_dep: ensure => 'installed'}
+
 }
 
 node server0 {
-  package {'tmux':
-    ensure => installed,
-    name => "tmux"
-  }
+ class {packages_wiki:}
 
-  package {'tree':
-    ensure => installed,
-  } 
-  
-  package {'apache2':
-    ensure => installed,
-  }
 }
